@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Transit Prop - Final Build</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #000;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- BACKGROUND-ONLY FAST PULSE --- */
+        @keyframes bg-only-pulse {
+            0% { background-color: #9e1b68; } 
+            50% { background-color: #d12e8d; }
+            100% { background-color: #9e1b68; }
+        }
+        .pulse-bg-fast { animation: bg-only-pulse 1.2s ease-in-out infinite; }
+
+        /* ACTIVE Box Pulse */
+        @keyframes active-text-pulse {
+            0% { color: #ff9ecf; border-color: #ff9ecf; }
+            50% { color: #ff5cad; border-color: #ff5cad; }
+            100% { color: #ff9ecf; border-color: #ff9ecf; }
+        }
+        .active-box-pulse { animation: active-text-pulse 1.2s ease-in-out infinite; }
+
+        /* MARQUEE */
+       @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.marquee-container {
+    display: flex;
+    width: max-content;
+    animation: marquee 7s linear infinite;
+}
+
+.marquee-text {
+    display: flex;
+    white-space: nowrap;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+}
+
+
+        /* BARCODE LINES */
+        .css-barcode {
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                90deg,
+                #9ca3af 0px, #9ca3af 3px,
+                transparent 3px, transparent 6px,
+                #9ca3af 6px, #9ca3af 8px,
+                transparent 8px, transparent 12px
+            );
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col bg-white">
+
+    <header class="pulse-bg-fast pt-4 pb-12 relative flex flex-col items-center z-10">
+
+      <div class="w-full flex justify-center items-center px-6 mb-2">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/GO_Transit_logo_old.svg/250px-GO_Transit_logo_old.svg.png"
+      class="w-[80px] h-auto"
+      style="filter: brightness(0) invert(1);"
+      alt="GO Transit Logo"
+    />
+</div>
+
+
+
+
+
+<div class="marquee-wrapper mb-1 h-7">
+    <div class="marquee-container">
+        <div class="marquee-text text-lg uppercase pr-24">
+            GO TRANSIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GO TRANSIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GO TRANSIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GO TRANSIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+      
+
+      
+        <p class="text-sm font-normal text-white">Union Station GO to Malton GO</p>
+    </header>
+
+    <div class="relative w-full -mt-4 z-20 flex justify-center">
+         <div class="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+             <div class="w-5 h-5 rounded-full bg-[#9e1b68] border-2 border-white"></div>
+         </div>
+    </div>
+
+    <main class="flex-1 bg-white px-6 pt-1 pb-4 flex flex-col justify-between">
+        
+        <div class="relative flex justify-between items-center h-28 border-b border-dashed border-gray-300">
+            <div class="absolute left-1/2 top-4 bottom-4 w-[1px] bg-gray-200 -translate-x-1/2"></div>
+            
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-1">
+                <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm2 0V6h5v4h-5zm3.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                </svg>
+            </div>
+
+            <div class="w-1/2 text-center">
+                <span class="text-5xl text-gray-800 font-light leading-none">x1</span>
+                <p class="text-sm font-bold text-gray-700 mt-1 uppercase">Passenger(s)</p>
+                <p class="text-[11px] text-gray-400">1x Adult</p>
+            </div>
+
+            <div class="w-1/2 text-center">
+                <svg class="w-10 h-10 text-gray-500 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+                <span class="text-sm font-bold text-gray-700 uppercase">One-Way</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center flex-grow py-6">
+            <p class="text-[13px] font-bold text-gray-800 mb-2 uppercase tracking-tight">Ticket Number: MZ62735872</p>
+            <div class="relative w-full h-16">
+                <div class="css-barcode"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="bg-white border-[3px] px-8 py-1 active-box-pulse">
+                        <span class="text-2xl font-bold tracking-widest uppercase">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 border-t border-dashed border-gray-300 pt-4 pb-2">
+            <div class="text-center">
+                <p class="text-[9px] font-black uppercase text-gray-900 leading-none mb-1">CURRENT DATE & TIME:</p>
+                <p id="real-clock" class="text-[13px] font-bold text-gray-800 tabular-nums uppercase"></p>
+            </div>
+            <div class="text-center border-l border-gray-100">
+                <p class="text-[9px] font-black uppercase text-gray-900 leading-none mb-1">TIME SINCE ACTIVATION:</p>
+                <p id="fake-timer" class="text-[13px] font-bold text-gray-800 tabular-nums">00:05:31</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pulse-bg-fast text-center py-8 px-8 flex flex-col justify-center min-h-[35vh]">
+        <p class="text-[15px] leading-snug font-medium mb-6 text-white">
+            Please show proof of your ticket to the<br>
+            Customer Protective Officers when asked
+        </p>
+        <div id="countdown" class="text-[3.8rem] font-light tracking-tight tabular-nums leading-none text-white">
+            03:54:29
+        </div>
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const dateStr = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            document.getElementById('real-clock').innerText = `${dateStr} ${timeStr}`;
+        }
+        function updateCountdown() {
+            const el = document.getElementById('countdown');
+            let [h, m, s] = el.innerText.split(':').map(Number);
+            if (s > 0) s--; else { s = 59; if (m > 0) m--; else { m = 59; h--; } }
+            el.innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        }
+        function updateTimer() {
+            const el = document.getElementById('fake-timer');
+            let [h, m, s] = el.innerText.split(':').map(Number);
+            s++; if (s > 59) { s = 0; m++; } if (m > 59) { m = 0; h++; }
+            el.innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        }
+        setInterval(() => {
+            updateClock();
+            updateCountdown();
+            updateTimer();
+        }, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
